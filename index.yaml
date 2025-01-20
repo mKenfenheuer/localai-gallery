@@ -1,0 +1,12 @@
+## Whisper-small-de-v3
+- url: "github:mKenfenheuer/localai-gallery/whisper-small-de-v3.yaml"
+  name: "whisper-small-de-v3"
+  license: other
+## Whisper-small-de-v2
+- url: "github:mKenfenheuer/localai-gallery/whisper-small-de-v2.yaml"
+  name: "whisper-small-de-v2"
+  license: other
+## Whisper-small-de
+- url: "github:mKenfenheuer/localai-gallery/whisper-small-de.yaml"
+  name: "whisper-small-de"
+  license: other
