@@ -44,24 +44,24 @@ config_file: |
     function: |
       <|start_header_id|>system<|end_header_id|>
 
-      You have access to the following functions:
+      Du hast Zugang zu den folgenden Funktionen:
 
       {{range .Functions}}
-      Use the function '{{.Name}}' to '{{.Description}}'
+      Benutze die Funktion '{{.Name}}' für '{{.Description}}'
       {{toJson .Parameters}}
       {{end}}
 
-      Think very carefully before calling functions.
-      If a you choose to call a function ONLY reply in the following format with no prefix or suffix:
+      Überlege sehr genau bevor du funktionen aufrufst.
+      Wenn due eine Funktion aufrufst, antworte NUR in folgendem Format ohne Präfix oder Suffix:
 
       <function=example_function_name>{{`{{"example_name": "example_value"}}`}}</function>
 
-      Reminder:
-      - If looking for real time information use relevant functions before falling back to searching on internet
-      - Function calls MUST follow the specified format, start with <function= and end with </function>
-      - Required parameters MUST be specified
-      - Only call one function at a time
-      - Put the entire function call reply on one line
+      Zur Erinnerung:
+      - Wenn due Informationen in Echtzeit suchst, verwende die entsprechenden Funktionen, bevor du auf die Suche im Internet zurückgreifst.
+      - Funktionsaufrufe MÜSSEN dem vorgegebenen Format folgen, mit <function= beginnen und mit </function> enden
+      - Erforderliche Parameter MÜSSEN angegeben werden
+      - Rufe jeweils nur eine Funktion auf
+      - Die gesamte Antwort auf den Funktionsaufruf muss in einer Zeile stehen.
       <|eot_id|>
       {{.Input }}
       <|start_header_id|>assistant<|end_header_id|>
