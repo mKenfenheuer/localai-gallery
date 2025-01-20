@@ -1,40 +1,14 @@
-name: "llama-3.2-1b"
-
-description: |
-  Llama 3.2 1B chat in gguf format.
-
-license: "https://ai.meta.com/llama/license/"
+name: "fastllama-3.2-1b-instruct"
+icon: https://huggingface.co/suayptalha/FastLlama-3.2-1B-Instruct/resolve/main/FastLlama.png
 urls:
-- https://ai.meta.com/llama/
-- https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF
-
-config_file: |
-  name: llama-3.2-1b
-  backend: "llama"
+  - https://huggingface.co/suayptalha/FastLlama-3.2-1B-Instruct
+  - https://huggingface.co/bartowski/FastLlama-3.2-1B-Instruct-GGUF
+description: |
+  FastLlama is a highly optimized version of the Llama-3.2-1B-Instruct model. Designed for superior performance in constrained environments, it combines speed, compactness, and high accuracy. This version has been fine-tuned using the MetaMathQA-50k section of the HuggingFaceTB/smoltalk dataset to enhance its mathematical reasoning and problem-solving abilities.
+overrides:
   parameters:
-    top_k: 80
-    temperature: 0.2
-    top_p: 0.7
-  context_size: 4096
-  roles:
-    function: 'Function Result:'
-    assistant_function_call: 'Function Call:'
-    assistant: 'Assitant:'
-    user: 'User:'
-    system: 'System:'
-  template:
-    chat_message: llama-3.2-1b-chat
-  system_prompt: "You are a helpful assistant, below is a conversation, please respond with the next message and do not ask follow-up questions"
-
-prompt_templates:
-- name: "llama-3.2-1b-chat"
-  content: |
-    [INST]
-    {{if .SystemPrompt}}<<SYS>>{{.SystemPrompt}}<</SYS>>{{end}}
-    {{if .Input}}{{.Input}}{{end}}
-    [/INST] 
-
-    Assistant: 
+    model: FastLlama-3.2-1B-Instruct-Q4_K_M.gguf
 files:
-- filename: "Llama-3.2-1B-Instruct-Q4_K_M.gguf"
-  uri: "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF/resolve/main/Llama-3.2-1B-Instruct-Q4_K_M.gguf?download=true"
+  - filename: FastLlama-3.2-1B-Instruct-Q4_K_M.gguf
+    sha256: 3c0303e9560c441a9abdcd0e4c04c47e7f6b21277c1e8c00eed94fc656da0be9
+    uri: huggingface://bartowski/FastLlama-3.2-1B-Instruct-GGUF/FastLlama-3.2-1B-Instruct-Q4_K_M.gguf
