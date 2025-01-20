@@ -6,16 +6,16 @@ urls:
 description: |
     OpenAI's Whisper model finetuned for german on mozilla common voice 17.0
     
-config_file: |
-  backend: whisper
-  parameters:
-    model: ggml-model.bin
-    
 tags:
     - whisper
     - stt
     - cpu
     - gpu
+    
+config_file: |
+  backend: whisper
+  parameters:
+    model: ggml-model.bin
 
 files:
 - filename: "ggml-model.bin"
