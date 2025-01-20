@@ -1,0 +1,74 @@
+name: "llama-3.2-1b"
+urls:
+  - https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF/
+files:
+  - filename: Llama-3.2-1B-Instruct-Q4_K_M.gguf
+    uri: huggingface://unsloth/Llama-3.2-1B-Instruct-GGUF/Llama-3.2-1B-Instruct-Q4_K_M.gguf
+tags:
+    - llm
+    - gguf
+    - cpu
+    - gpu
+    - text-generation
+    - chat
+config_file: |
+  mmap: true
+  parameters:
+    model: Llama-3.2-1B-Instruct-Q4_K_M.gguf
+  function:
+    disable_no_action: true
+    grammar:
+      disable: true
+    response_regex:
+    - <function=(?P<name>\w+)>(?P<arguments>.*)</function>
+  template:
+    chat_message: |
+      <|start_header_id|>{{if eq .RoleName "assistant"}}assistant{{else if eq .RoleName "system"}}system{{else if eq .RoleName "tool"}}tool{{else if eq .RoleName "user"}}user{{end}}<|end_header_id|>
+
+      {{ if .FunctionCall -}}
+      Function call:
+      {{ else if eq .RoleName "tool" -}}
+      Function response:
+      {{ end -}}
+      {{ if .Content -}}
+      {{.Content -}}
+      {{ else if .FunctionCall -}}
+      {{ toJson .FunctionCall -}}
+      {{ end -}}
+      <|eot_id|>
+    function: |
+      <|start_header_id|>system<|end_header_id|>
+
+      Du hast Zugang zu den folgenden Funktionen:
+
+      {{range .Functions}}
+      Benutze die Funktion '{{.Name}}' für '{{.Description}}'
+      {{toJson .Parameters}}
+      {{end}}
+
+      Überlege sehr genau bevor du funktionen aufrufst.
+      Wenn due eine Funktion aufrufst, antworte NUR in folgendem Format ohne Präfix oder Suffix:
+
+      <function=example_function_name>{{`{{"example_name": "example_value"}}`}}</function>
+
+      Zur Erinnerung:
+      - Wenn due Informationen in Echtzeit suchst, verwende die entsprechenden Funktionen, bevor du auf die Suche im Internet zurückgreifst.
+      - Funktionsaufrufe MÜSSEN dem vorgegebenen Format folgen, mit <function= beginnen und mit </function> enden
+      - Erforderliche Parameter MÜSSEN angegeben werden
+      - Rufe jeweils nur eine Funktion auf
+      - Die gesamte Antwort auf den Funktionsaufruf muss in einer Zeile stehen.
+      <|eot_id|>
+      {{.Input }}
+      <|start_header_id|>assistant<|end_header_id|>
+    chat: |
+      {{.Input }}
+      <|start_header_id|>assistant<|end_header_id|>
+    completion: |
+      {{.Input}}
+  context_size: 8192
+  f16: true
+  stopwords:
+  - <|im_end|>
+  - <dummy32000>
+  - "<|eot_id|>"
+  - <|end_of_text|>
