@@ -1,0 +1,17 @@
+name: "whisper-small-de"
+license: "MIT"
+urls:
+- https://huggingface.co/mkenfenheuer/whisper-small-de
+
+description: |
+    OpenAI's Whisper model finetuned for german on mozilla common voice 17.0
+    
+config_file: |
+  backend: whisper
+  parameters:
+    model: ggml-model.bin
+
+files:
+- filename: "ggml-model.bin"
+  sha256: "c38b886f88abd239fb50ff56446e789b2ad68570e6d646bac0a27312f3375d5a"
+  uri: "https://huggingface.co/mkenfenheuer/whisper-small-de/resolve/main/ggml-model.bin"
