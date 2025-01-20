@@ -1,4 +1,4 @@
-name: "llama-3.2-1b"
+name: "fastllama-3.2-1b"
 icon: https://huggingface.co/suayptalha/FastLlama-3.2-1B-Instruct/resolve/main/FastLlama.png
 urls:
   - https://huggingface.co/suayptalha/FastLlama-3.2-1B-Instruct
