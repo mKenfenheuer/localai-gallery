@@ -10,3 +10,7 @@
 - url: "github:mKenfenheuer/localai-gallery/whisper-small-de.yaml"
   name: "whisper-small-de"
   license: other
+## llama-3.2-1b
+- url: "github:mKenfenheuer/localai-gallery/llama-3.2-1b.yaml"
+  name: "llama-3.2-1b"
+  license: other
