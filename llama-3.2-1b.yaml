@@ -1,0 +1,40 @@
+name: "llama-3.2-1b"
+
+description: |
+  Llama 3.2 1B chat in gguf format.
+
+license: "https://ai.meta.com/llama/license/"
+urls:
+- https://ai.meta.com/llama/
+- https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF
+
+config_file: |
+  name: llama-3.2-1b
+  backend: "llama"
+  parameters:
+    top_k: 80
+    temperature: 0.2
+    top_p: 0.7
+  context_size: 4096
+  roles:
+    function: 'Function Result:'
+    assistant_function_call: 'Function Call:'
+    assistant: 'Assitant:'
+    user: 'User:'
+    system: 'System:'
+  template:
+    chat_message: llama-3.2-1b-chat
+  system_prompt: "You are a helpful assistant, below is a conversation, please respond with the next message and do not ask follow-up questions"
+
+prompt_templates:
+- name: "llama-3.2-1b-chat"
+  content: |
+    [INST]
+    {{if .SystemPrompt}}<<SYS>>{{.SystemPrompt}}<</SYS>>{{end}}
+    {{if .Input}}{{.Input}}{{end}}
+    [/INST] 
+
+    Assistant: 
+files:
+- filename: "Llama-3.2-1B-Instruct-Q4_K_M.gguf"
+  uri: "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF/resolve/main/Llama-3.2-1B-Instruct-Q4_K_M.gguf?download=true"
