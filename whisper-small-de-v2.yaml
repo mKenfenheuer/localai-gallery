@@ -10,6 +10,12 @@ config_file: |
   backend: whisper
   parameters:
     model: ggml-model.bin
+    
+tags:
+    - whisper
+    - stt
+    - cpu
+    - gpu
 
 files:
 - filename: "ggml-model.bin"
