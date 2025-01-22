@@ -15,9 +15,9 @@ tags:
 config_file: |
   backend: whisper
   parameters:
-    model: ggml-model.bin
+    model: whisper-small-de.bin
 
 files:
-- filename: "ggml-model.bin"
+- filename: "whisper-small-de.bin"
   sha256: "c38b886f88abd239fb50ff56446e789b2ad68570e6d646bac0a27312f3375d5a"
   uri: "https://huggingface.co/mkenfenheuer/whisper-small-de/resolve/main/ggml-model.bin"
