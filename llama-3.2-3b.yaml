@@ -13,6 +13,7 @@ tags:
     - chat
 config_file: |
   mmap: true
+  backend: llama-cpp
   parameters:
     model: Llama-3.2-3B-Instruct-Q4_K_M.gguf
   function:
