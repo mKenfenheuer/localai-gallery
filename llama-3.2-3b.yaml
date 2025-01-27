@@ -22,6 +22,8 @@ config_file: |
       disable: true
     response_regex:
     - \[(?P<name>\w+)\((?P<arguments>.*)\)\]
+    argument_regex:
+    - (?P<key>[^ '\(=,]+)[='"]+(?P<value>[^=,"']+)['"]?
   template:
     chat: |
       <|begin_of_text|><|start_header_id|>system<|end_header_id|>
